@@ -1,51 +1,52 @@
-import React, {useState} from "react";
-import {Button, StyleSheet, TextInput, View} from "react-native";
+import React, { useState } from "react";
+import { Button, StyleSheet, TextInput, View, Text } from "react-native";
 
 export default function App() {
+  const [enteredGoal, setEnteredGoal] = useState("");
+  const [courseGoals, setcourseGoals] = useState([]);
 
-    const [enteredGoal, setEnteredGoal] = useState('')
-    const [courseGoals, setcourseGoals] = useState([]);
+  const goalInputHandler = (enteredText) => {
+    setEnteredGoal(enteredText);
+  };
 
-    const goalInputHandler = (enteredText) => {
-        setEnteredGoal(enteredText)
-    }
+  const addGoalHandler = () => {
+    //using a function to be sure to have the updated state
+    setcourseGoals((currentGoals) => [...courseGoals, enteredGoal]);
+  };
 
-    const addGoalHandler = () =>{
-        //using a function to be sure to have the updated state
-        setcourseGoals(currentGoals => [ ...courseGoals, enteredGoal])
-    }
-
-    return (
-        <View style={styles.screen}>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    placeholder="Course Goal"
-                    style={styles.input}
-                    onChangeText={goalInputHandler}
-                    value={enteredGoal}
-                />
-                <Button title="ADD" onPress={addGoalHandler}/>
-            </View>
-            <View>
-
-            </View>
-        </View>
-    );
+  return (
+    <View style={styles.screen}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Course Goal"
+          style={styles.input}
+          onChangeText={goalInputHandler}
+          value={enteredGoal}
+        />
+        <Button title="ADD" onPress={addGoalHandler} />
+      </View>
+      <View>
+        {courseGoals.map((goal, index) => (
+          <Text key={index}>{goal}</Text>
+        ))}
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        padding: 50
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-    },
-    input: {
-        width: '80%',
-        borderBottomColor: "black",
-        borderWidth: 1,
-        padding: 10
-    }
+  screen: {
+    padding: 50,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  input: {
+    width: "80%",
+    borderBottomColor: "black",
+    borderWidth: 1,
+    padding: 10,
+  },
 });
