@@ -2,7 +2,7 @@
 <p>
 </p>
 
-> TAcademind's Udemy tutorial by Maximilian Schwarzmüller to discover React Native.( [course here](https://www.udemy.com/course/react-native-the-practical-guide/))
+> Udemy tutorial by Maximilian Schwarzmüller to discover React Native.([course here](https://www.udemy.com/course/react-native-the-practical-guide/))
 > <br/>
 > The purpose of the application is to be able to create a list of goals for training.
 
